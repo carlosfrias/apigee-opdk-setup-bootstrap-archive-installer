@@ -13,6 +13,6 @@ galaxy_info:
   - apigee
   - opdk
 dependencies:
-- { role: opdk-setup-default-settings }
-- { role: opdk-setup-bootstrap-rollback, remove_data: false }
+- { role: apigee-opdk-setup-default-settings }
+- { role: apigee-opdk-setup-bootstrap-rollback, remove_apigee: false }
 

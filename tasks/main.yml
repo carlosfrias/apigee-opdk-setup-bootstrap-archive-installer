@@ -1,5 +1,5 @@
 ---
-# tasks file for opdk-setup-bootstrap-archive-installer
+# tasks file for apigee-opdk-setup-bootstrap-archive-installer
 - name: Configure local repository
   shell: "bash {{ archive_folder }}/repos/{{ bootstrap_filename }} apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
 
