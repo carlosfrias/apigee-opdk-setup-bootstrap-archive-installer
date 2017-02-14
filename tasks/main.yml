@@ -1,7 +1,12 @@
 ---
 # tasks file for apigee-opdk-setup-bootstrap-archive-installer
-- name: Configure local repository
-  shell: "bash {{ archive_folder }}/repos/{{ bootstrap_filename }} apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
+- name: Configure local repository - 4.16.01
+  shell: "bash {{ archive_folder }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
+  when: opdk_version == version_compare('4.16.01', '==')
+
+- name: Configure local repository for greater than 4.16.01
+  shell: "bash {{ archive_folder }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
+  when: opdk_version == version_compare('4.16.01', '>')
 
 - name: Install apigee setup service
   shell: '{{ apigee_service }} apigee-setup install'
