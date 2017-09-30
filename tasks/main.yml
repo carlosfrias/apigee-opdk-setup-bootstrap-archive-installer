@@ -2,7 +2,7 @@
 # tasks file for apigee-opdk-setup-bootstrap-archive-installer
 - name: Configure local repository - 4.16.01
   shell: "bash {{ archive_folder }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
-  when: opdk_version | version_compare('4.16.01', '==')
+  when: opdk_version | version_compare('4.16.01', '==') and opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
 
 - name: DEBUG_MODE - Configure local repository - 4.16.01
   shell: "bash -x {{ archive_folder }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
@@ -10,7 +10,7 @@
 
 - name: Configure local repository for greater than 4.16.01
   shell: "bash {{ archive_folder }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
-  when: opdk_version | version_compare('4.16.01', '>')
+  when: opdk_version | version_compare('4.16.01', '>') and opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
 
 - name: DEBUG_MODE - Configure local repository for greater than 4.16.01
   shell: "bash -x {{ archive_folder }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ archive_folder }}/repos JAVA_FIX=C"
