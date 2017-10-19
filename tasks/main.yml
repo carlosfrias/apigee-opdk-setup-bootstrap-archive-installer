@@ -3,24 +3,25 @@
 - block:
   - name: Configure local repository - 4.16.01
     shell: "bash {{ apigeerepobasepath }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath }}/repos JAVA_FIX=C"
-    when: opdk_version | version_compare('4.16.01', '==') and opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
+    when: opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
 
   - name: DEBUG_MODE - Configure local repository - 4.16.01
     shell: "bash -x {{ apigeerepobasepath }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath }}/repos JAVA_FIX=C"
-    when: opdk_version | version_compare('4.16.01', '==') and opdk_debug_mode is defined and opdk_debug_mode | trim | lower == 'on'
+    when: opdk_debug_mode is defined and opdk_debug_mode | trim | lower == 'on'
 
   when: opdk_version | version_compare('4.16.01', '==')
 
 - block:
   - name: Configure local repository for greater than 4.16.01
     shell: "bash {{ apigeerepobasepath }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath }}/repos JAVA_FIX=C"
-    when: opdk_version | version_compare('4.16.01', '>') and opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
+    when: opdk_debug_mode is not defined or opdk_debug_mode | trim | lower == 'off'
 
   - name: DEBUG_MODE - Configure local repository for greater than 4.16.01
     shell: "bash -x {{ apigeerepobasepath }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath }}/repos JAVA_FIX=C"
-    when: opdk_version | version_compare('4.16.01', '>') and opdk_debug_mode is defined and opdk_debug_mode | trim | lower == 'on'
+    when: opdk_debug_mode is defined and opdk_debug_mode | trim | lower == 'on'
 
   when: opdk_version | version_compare('4.16.01', '>')
+
 - name: Install apigee setup service
   shell: '{{ apigee_service }} apigee-setup install'
 
