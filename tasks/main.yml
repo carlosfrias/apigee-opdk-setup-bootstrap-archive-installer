@@ -27,5 +27,5 @@
   when: opdk_version | version_compare('4.16.01', '>')
 
 - name: Install apigee setup service
-  shell: '{{ apigee_service }} apigee-setup install'
+  shell: '/opt/apigee/apigee-service/bin/apigee-service apigee-setup install'
 
