@@ -1,6 +1,7 @@
 ---
 - name: Install bootstrap from local repository for 4.16.01
   become: true
+  become_user: root
   shell: "bash {{ apigeerepobasepath | default(opdk_installer_path) }}/{{ apigee_archive_name }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath | default(opdk_installer_path) }}/repos JAVA_FIX=C"
   environment:
     JAVA_HOME: '{{ java_home }}'
@@ -8,6 +9,7 @@
 
 - name: DEBUG_MODE - Install bootstrap from local repository for 4.16.01
   become: true
+  become_user: root
   shell: "bash -x {{ apigeerepobasepath | default(opdk_installer_path) }}/{{ apigee_archive_name }}/repos/bootstrap.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath | default(opdk_installer_path) }}/repos JAVA_FIX=C"
   environment:
     JAVA_HOME: '{{ java_home }}'
@@ -15,6 +17,7 @@
 
 - name: Install bootstrap from local repository for greater than 4.16.01
   become: true
+  become_user: root
   shell: "bash {{ apigeerepobasepath | default(opdk_installer_path) }}/{{ apigee_archive_name }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath | default(opdk_installer_path) }}/repos JAVA_FIX=C"
   environment:
     JAVA_HOME: '{{ java_home }}'
@@ -22,6 +25,7 @@
 
 - name: DEBUG_MODE - Install bootstrap from local repository for greater than 4.16.01
   become: true
+  become_user: root
   shell: "bash -x {{ apigeerepobasepath | default(opdk_installer_path) }}/{{ apigee_archive_name }}/repos/bootstrap_{{ opdk_version }}.sh apigeeprotocol='file://' apigeerepobasepath={{ apigeerepobasepath | default(opdk_installer_path) }}/repos JAVA_FIX=C"
   environment:
     JAVA_HOME: '{{ java_home }}'
