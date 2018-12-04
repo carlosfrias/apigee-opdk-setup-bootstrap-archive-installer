@@ -7,7 +7,7 @@ Requirements
 ------------
 
 The  Apigee Mirror archive has been uploaded to the target hosts and is ready to
-be decompressed so taht the associated bootstrap can be installed.
+be decompressed so that the associated bootstrap can be installed.
 
 Role Variables
 --------------
