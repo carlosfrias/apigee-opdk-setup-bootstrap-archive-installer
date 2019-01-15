@@ -42,9 +42,9 @@ Including an example of how to use your role (for instance, with variables passe
       tags: ['install']
       vars:
         ansible_workspace: "~/.ansible"
-        apigee_workspace: "~/apigee-workspace"
+        apigee_workspace: "~/.apigee-workspace"
         ansible_workspace: "~/.ansible"
-        apigee_workspace: "~/apigee-workspace"
+        apigee_workspace: "~/.apigee-workspace"
         opdk_version: 4.18.05
         apigeereleasever: 4.18.05
         property_folders:
