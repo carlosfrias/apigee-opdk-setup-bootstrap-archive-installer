@@ -1,4 +1,11 @@
 ---
+- name: Unarchive on target node
+  become: true
+  unarchive:
+    src: '{{ apigeerepobasepath | default(opdk_resources_path) }}/{{ apigee_archive_file_name }}'
+    dest: '{{ apigeerepobasepath | default(opdk_resources_path) }}'
+    copy: false
+
 - name: Install bootstrap from local repository for 4.16.01
   become: true
   become_user: root
