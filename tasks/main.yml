@@ -1,5 +1,6 @@
 ---
 - name: Ensure target path exists
+  become: true
   file:
     path: "{{ apigee_home }}/data/apigee-mirror"
     state: directory
