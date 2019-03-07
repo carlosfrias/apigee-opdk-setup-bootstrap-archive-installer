@@ -1,4 +1,11 @@
 ---
+- name: Ensure target path exists
+  file:
+    path: "{{ apigee_home }}/data/apigee-mirror"
+    state: directory
+    owner: '{{ opdk_user_name }}'
+    group: '{{ opdk_group_name }}'
+
 - name: Unarchive on target node
   become: true
   unarchive:
